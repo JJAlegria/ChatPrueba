@@ -10,6 +10,7 @@ import os
 
 
 app = Flask(__name__)
+CORS(app)
 
 conversaciones_faq = [
     # Tema: Horario de Atención de la Terminal
