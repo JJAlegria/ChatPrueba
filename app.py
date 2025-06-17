@@ -1,5 +1,6 @@
 # app.py
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template # Añadir render_template
+from flask_cors import CORS
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from chatterbot.logic import BestMatch, SpecificResponseAdapter # Importamos SpecificResponseAdapter
@@ -320,13 +321,7 @@ def ask_bot():
 
 @app.route('/')
 def index():
-    return """
-    <h1>Asistente de la Terminal de Transportes de Popayán</h1>
-    <p>¡Hola! Soy tu chatbot de FAQs. Estoy listo para responder tus preguntas.</p>
-    <p>Para interactuar, envía una solicitud <strong>POST</strong> a la ruta <code>/ask</code> con un cuerpo JSON como este:</p>
-    <pre><code>{"message": "Tu pregunta aquí"}</code></pre>
-    <p>Ejemplo de pregunta: <em>"¿Cuál es el horario de atención?"</em></p>
-    """
+    return render_template('index.html')
 
 # --- 6. Ejecutar la Aplicación Flask ---
 if __name__ == '__main__':
